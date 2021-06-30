@@ -4,60 +4,95 @@ import "./Print.css";
 // const request = require("request");
 // const csv = require("csvtojson");
 
-const Print = ({ sList, load, selectedS, selectedD, selectedSN }) => {
+const Print = ({
+  load,
+  selectedS,
+  selectedD,
+  selectedSN,
+  Sdate,
+  SdateData,
+}) => {
   const [stateData, setStateData] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (selectedD === "Select District") {
-      const fetchItems = async () => {
-        const response = await axios.get(
-          "https://api.covid19india.org/states_daily.json"
-        );
-
-        var len = response.data.states_daily.length;
-        var arr = [];
-        for (var i = 3; i >= 1; i--) {
-          var obj = {
-            status: response.data.states_daily[len - i].status,
-            data: response.data.states_daily[len - i][selectedS],
-          };
-          arr.push(obj);
+    const fetchItems = async () => {
+      setLoading(true);
+      var stateCode = selectedS.toUpperCase();
+      const response = await axios.get(
+        `https://api.covid19india.org/v4/min/timeseries-${stateCode}.min.json`
+      );
+      var fullData = response.data[stateCode];
+      var stateDateList = [];
+      var stateDateData = [];
+      if (selectedD === "Select District") {
+        var objState = fullData.dates;
+        console.log(objState);
+        var lengthState = Object.keys(objState).length;
+        stateDateList = [];
+        stateDateData = [];
+        for (var i = lengthState - 7; i < lengthState; i++) {
+          stateDateList.push(Object.keys(objState)[i]);
         }
-        setStateData([...arr]);
-        setLoading(false);
-      };
-      fetchItems();
-    } else {
-      const fetchItems = async () => {
-        var stateCode = selectedS.toUpperCase();
-        const response = await axios.get(
-          `https://api.covid19india.org/v4/min/timeseries-${stateCode}.min.json`
+        stateDateList.map((fetchItem) =>
+          stateDateData.push(objState[fetchItem].delta)
         );
-        var obj = response.data[stateCode].districts[selectedD].dates;
-        console.log(obj);
-        var length = Object.keys(obj).length;
-        var latestDate = Object.keys(obj)[length - 1];
-        var arr = [
+        Sdate([...stateDateList]);
+        SdateData([...stateDateData]);
+        // console.log(stateDateList);
+        var latestStateDate = Object.keys(objState)[lengthState - 1];
+        var arrState = [
           {
             status: "Confirmed",
-            data: obj[latestDate].delta.confirmed,
+            data: objState[latestStateDate].delta.confirmed,
           },
 
           {
             status: "Recovered",
-            data: obj[latestDate].delta.recovered,
+            data: objState[latestStateDate].delta.recovered,
           },
           {
             status: "Deceased",
-            data: obj[latestDate].delta.deceased,
+            data: objState[latestStateDate].delta.deceased,
           },
         ];
-        setStateData([...arr]);
-      };
-      fetchItems();
-    }
-  }, [selectedS, selectedD, load, sList, selectedSN]);
+        setStateData([...arrState]);
+        setLoading(false);
+      } else {
+        var objDistrict = fullData.districts[selectedD].dates;
+        var lengthDistrict = Object.keys(objDistrict).length;
+        stateDateList = [];
+        stateDateData = [];
+        for (var j = lengthDistrict - 7; j < lengthDistrict; j++) {
+          stateDateList.push(Object.keys(objDistrict)[j]);
+        }
+        stateDateList.map((item) =>
+          stateDateData.push(objDistrict[item].delta)
+        );
+        Sdate([...stateDateList]);
+        SdateData([...stateDateData]);
+        var latestDistrictDate = Object.keys(objDistrict)[lengthDistrict - 1];
+        var arrDistrict = [
+          {
+            status: "Confirmed",
+            data: objDistrict[latestDistrictDate].delta.confirmed,
+          },
+
+          {
+            status: "Recovered",
+            data: objDistrict[latestDistrictDate].delta.recovered,
+          },
+          {
+            status: "Deceased",
+            data: objDistrict[latestDistrictDate].delta.deceased,
+          },
+        ];
+        setStateData([...arrDistrict]);
+        setLoading(false);
+      }
+    };
+    fetchItems();
+  }, [selectedS, selectedD]);
   return (
     <div className="cards">
       {loading || load

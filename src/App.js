@@ -3,13 +3,15 @@ import "./App.css";
 import Nav from "./components/Nav";
 import District from "./components/District";
 import Print from "./components/Print";
-
+import Chart from "./components/LineChart";
 import axios from "axios";
 function App() {
   const [statesData, setStatesData] = useState({});
   const [selectedState, setSelectedState] = useState("kl");
   const [selectedStateName, setSelectedStateName] = useState("Kerala");
   const [selectedDistrict, setSelectedDistrict] = useState("Select District");
+  const [stateDateList, setStateDateList] = useState([]);
+  const [stateDateData, setStateDateData] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     const fetchItems = async () => {
@@ -31,13 +33,18 @@ function App() {
         setDistrictQuery={(d) => setSelectedDistrict(d)}
         setStateNameQuery={(n) => setSelectedStateName(n)}
       />
-      <Print
-        load={loading}
-        sList={statesData}
-        selectedS={selectedState}
-        selectedSN={selectedStateName}
-        selectedD={selectedDistrict}
-      />
+      <div className="chartAlign">
+        <Print
+          load={loading}
+          sList={statesData}
+          selectedS={selectedState}
+          selectedSN={selectedStateName}
+          selectedD={selectedDistrict}
+          Sdate={(d) => setStateDateList(d)}
+          SdateData={(data) => setStateDateData(data)}
+        />
+        <Chart stateD={stateDateList} stateDateD={stateDateData} />
+      </div>
     </div>
   );
 }
