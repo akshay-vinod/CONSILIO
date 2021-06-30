@@ -5,6 +5,7 @@
   flex-direction: column;
   justify-content: space-around;
   flex-wrap: wrap;
+  width: 300px;
 }
 .card {
   height: 100px;
