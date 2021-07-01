@@ -3,10 +3,39 @@
   border: 0;
   box-sizing: border-box;
 }
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap");
-.chartAlign {
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;700;900&display=swap");
+
+.App {
   display: flex;
-  align-items: center;
-  justify-content: space-around;
-  flex-wrap: wrap;
+  background-color: #22252d;
+  height: 100vh;
+}
+.overview {
+  width: 100%;
+  margin: 30px;
+  background-color: #2e3139;
+  border-radius: 15px;
+}
+.bars-1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 45px;
+  height: 40px;
+  --c: linear-gradient(currentColor 0 0);
+  background: var(--c) 0% 50%, var(--c) 50% 50%, var(--c) 100% 50%;
+  background-size: 9px 100%;
+  background-repeat: no-repeat;
+  animation: b1 1s infinite linear;
+}
+@keyframes b1 {
+  33% {
+    background-size: 9px 10%, 9px 100%, 9px 100%;
+  }
+  50% {
+    background-size: 9px 100%, 9px 10%, 9px 100%;
+  }
+  66% {
+    background-size: 9px 100%, 9px 100%, 9px 10%;
+  }
 }

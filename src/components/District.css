@@ -4,8 +4,10 @@
   justify-content: space-between;
   margin: 5vh 10px 0 10px;
 }
-.overview h2 {
+.district > div h2 {
   font-family: "Lato", sans-serif;
+  color: rgb(245, 237, 237);
+  margin-left: 30px;
 }
 .selectors {
   display: flex;

@@ -1,0 +1,19 @@
+.LineChart {
+  display: flex;
+}
+.chart {
+  width: 37vw;
+  height: 350px;
+  background-color: #22252d;
+  margin-left: 30px;
+  border-radius: 8px;
+  padding: 10px;
+}
+.pie {
+  width: 37vw;
+  height: 350px;
+  background-color: #22252d;
+  margin-left: 30px;
+  border-radius: 8px;
+  padding: 10px;
+}

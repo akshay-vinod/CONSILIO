@@ -1,33 +1,20 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import "./Print.css";
 // const request = require("request");
 // const csv = require("csvtojson");
 
-const Print = ({
-  load,
-  selectedS,
-  selectedD,
-  selectedSN,
-  Sdate,
-  SdateData,
-}) => {
+const Print = ({ fullSData, load, selectedS, selectedD, Sdate, SdateData }) => {
   const [stateData, setStateData] = useState([]);
-  const [loading, setLoading] = useState(true);
-
   useEffect(() => {
     const fetchItems = async () => {
-      setLoading(true);
-      var stateCode = selectedS.toUpperCase();
-      const response = await axios.get(
-        `https://api.covid19india.org/v4/min/timeseries-${stateCode}.min.json`
-      );
-      var fullData = response.data[stateCode];
+      var fullData = fullSData;
+      // const districtList = await fullData.districts;
+      // districtD(districtList);
       var stateDateList = [];
       var stateDateData = [];
       if (selectedD === "Select District") {
         var objState = fullData.dates;
-        console.log(objState);
+        // console.log(objState);
         var lengthState = Object.keys(objState).length;
         stateDateList = [];
         stateDateData = [];
@@ -40,24 +27,6 @@ const Print = ({
         Sdate([...stateDateList]);
         SdateData([...stateDateData]);
         // console.log(stateDateList);
-        var latestStateDate = Object.keys(objState)[lengthState - 1];
-        var arrState = [
-          {
-            status: "Confirmed",
-            data: objState[latestStateDate].delta.confirmed,
-          },
-
-          {
-            status: "Recovered",
-            data: objState[latestStateDate].delta.recovered,
-          },
-          {
-            status: "Deceased",
-            data: objState[latestStateDate].delta.deceased,
-          },
-        ];
-        setStateData([...arrState]);
-        setLoading(false);
       } else {
         var objDistrict = fullData.districts[selectedD].dates;
         var lengthDistrict = Object.keys(objDistrict).length;
@@ -71,32 +40,36 @@ const Print = ({
         );
         Sdate([...stateDateList]);
         SdateData([...stateDateData]);
-        var latestDistrictDate = Object.keys(objDistrict)[lengthDistrict - 1];
-        var arrDistrict = [
-          {
-            status: "Confirmed",
-            data: objDistrict[latestDistrictDate].delta.confirmed,
-          },
-
-          {
-            status: "Recovered",
-            data: objDistrict[latestDistrictDate].delta.recovered,
-          },
-          {
-            status: "Deceased",
-            data: objDistrict[latestDistrictDate].delta.deceased,
-          },
-        ];
-        setStateData([...arrDistrict]);
-        setLoading(false);
       }
+      var arrState = [
+        {
+          status: "Confirmed",
+          data: stateDateData[6].confirmed,
+          increase: stateDateData[6].confirmed - stateDateData[5].confirmed,
+          icon: "fas fa-hospital-user",
+        },
+
+        {
+          status: "Recovered",
+          data: stateDateData[6].recovered,
+          increase: stateDateData[6].recovered - stateDateData[5].recovered,
+          icon: "bi bi-heart-fill",
+        },
+        {
+          status: "Deceased",
+          data: stateDateData[6].deceased,
+          increase: stateDateData[6].deceased - stateDateData[5].deceased,
+          icon: "bi bi-x-octagon-fill",
+        },
+      ];
+      setStateData([...arrState]);
     };
-    fetchItems();
+    if (!load) fetchItems();
   }, [selectedS, selectedD]);
   return (
     <div className="cards">
-      {loading || load
-        ? "</>"
+      {load
+        ? ""
         : stateData.map((item, index) => {
             var itemData = "-";
             if (item.data !== undefined) {
@@ -104,8 +77,15 @@ const Print = ({
             }
             return (
               <div className="card" key={index}>
-                <h4>{item.status}</h4>
-                <p>{itemData}</p>
+                <div className="icon">
+                  <i className={item.icon} style={{ color: "#ffff" }}></i>
+                </div>
+                <div>
+                  <h4>{item.status}</h4>
+                  <p>{itemData}</p>
+                  <br />
+                  <p>{itemData === "-" ? "-" : item.increase}</p>
+                </div>
               </div>
             );
           })}

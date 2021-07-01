@@ -1,13 +1,52 @@
-nav {
-  font-family: "Lato", sans-serif;
-  min-height: 8vh;
+.navbar {
+  display: flex;
+  flex-direction: column;
+  min-width: 200px;
+  background-color: #22252d;
+  color: rgb(255, 255, 255);
+  position: relative;
 }
-.logo {
-  font-size: 1.6em;
-  margin: 30px;
-  letter-spacing: 2px;
+.navbar h2 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  padding: 40px 30px;
 }
-a {
+.nav-links {
+  list-style: none;
+  padding: 0;
+  margin-top: 5vh;
+}
+.nav-links li button a {
+  font-family: "Poppins", sans-serif;
   text-decoration: none;
-  color: #000;
+  color: rgb(255, 255, 255);
+}
+.btn {
+  width: 170px;
+  height: 50px;
+  border-radius: 9px;
+  background: #485563; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #29323c,
+    #485563
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #29323c,
+    #485563
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.btn i {
+  margin: 0 5px;
+}
+
+.navbar img {
+  width: 57px;
+  height: 57px;
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  border-radius: 50%;
+  box-shadow: 0 10px 50px -6px #22252d;
 }

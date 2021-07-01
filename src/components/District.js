@@ -2,38 +2,35 @@ import React, { useState, useEffect } from "react";
 import "./District.css";
 const District = ({
   sList,
+  dList,
   load,
+  loadApi,
   setStateQuery,
   setDistrictQuery,
-  setStateNameQuery,
+  setChartDisplay,
 }) => {
   const [input, setInput] = useState("Kerala");
   const [district, setDistrict] = useState("Select District");
+  const [display, setDisplay] = useState("Kerala");
   useEffect(() => {
-    if (!load) {
+    if (!loadApi) {
       var stateCode = sList[input].statecode;
-      setStateQuery(stateCode.toLowerCase());
+      setStateQuery(stateCode);
     }
-    setStateNameQuery(input);
+
     setDistrictQuery(district);
-  }, [
-    input,
-    setStateQuery,
-    district,
-    setDistrictQuery,
-    sList,
-    load,
-    setStateNameQuery,
-  ]);
+    if (district !== "Select District") setDisplay(district);
+    setChartDisplay(display);
+  }, [input, setStateQuery, district, setDistrictQuery, loadApi, load]);
 
   return (
     <div className="district">
-      <div className="overview">
-        <h2>Overview</h2>
+      <div className="">
+        <h2>Overview : {district === "Select District" ? input : district}</h2>
       </div>
       <div className="selectors">
         <div className="select">
-          {load ? (
+          {loadApi ? (
             ""
           ) : (
             <select
@@ -41,6 +38,7 @@ const District = ({
               onChange={(e) => {
                 setInput(e.target.value);
                 setDistrict("Select District");
+                setDisplay(e.target.value);
               }}
             >
               {Object.keys(sList).map((item) => {
@@ -64,8 +62,8 @@ const District = ({
               onChange={(e) => setDistrict(e.target.value)}
             >
               <option value="Select District">Select District</option>
-              {Object.keys(sList[input].districtData).map((item) => {
-                if (item !== "Other State") {
+              {Object.keys(dList).map((item) => {
+                if (item !== "Other State" && item !== "Unknown") {
                   return (
                     <option key={item} value={item}>
                       {item}
