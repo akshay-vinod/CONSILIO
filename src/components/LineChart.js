@@ -4,6 +4,7 @@ import "./LineChart.css";
 const LineChart = ({ stateD, stateDateD, dData, title }) => {
   var Confirmed = [];
   var Recovered = [];
+  var Deceased = [];
   var DistrictName = [];
   var DistrictValue = [];
   var dataDistrict = [];
@@ -20,7 +21,7 @@ const LineChart = ({ stateD, stateDateD, dData, title }) => {
   dataDistrict.sort((a, b) => {
     return b.value - a.value;
   });
-  console.log(dataDistrict);
+  // console.log(dataDistrict);
   for (var j = 0; j < 5; j++) {
     if (dataDistrict[j] !== undefined) {
       DistrictName.push(dataDistrict[j].name);
@@ -31,6 +32,7 @@ const LineChart = ({ stateD, stateDateD, dData, title }) => {
     if (item !== undefined) {
       if ("confirmed" in item) Confirmed.push(item.confirmed);
       if ("recovered" in item) Recovered.push(item.recovered);
+      if ("deceased" in item) Deceased.push(item.deceased);
     }
   });
   const data = {
@@ -87,6 +89,9 @@ const LineChart = ({ stateD, stateDateD, dData, title }) => {
           options={{
             maintainAspectRatio: false,
             plugins: {
+              legend: {
+                position: "bottom",
+              },
               title: {
                 display: true,
                 align: "start",
@@ -109,10 +114,17 @@ const LineChart = ({ stateD, stateDateD, dData, title }) => {
             options={{
               maintainAspectRatio: false,
               plugins: {
+                legend: {
+                  position: "right",
+                  title: {
+                    display: true,
+                    text: `On ${stateD[6]}`,
+                  },
+                },
                 title: {
                   display: true,
                   align: "start",
-                  text: `Top districts(confirmed) `,
+                  text: `Top districts(Confirmed Case) `,
                   color: "#ffff",
                   font: {
                     size: 21,

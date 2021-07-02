@@ -63,6 +63,8 @@ function App() {
               selectedS={selectedState}
               selectedD={selectedDistrict}
               fullSData={fullStateData}
+              chartLabel={stateDateList}
+              chartData={stateDateData}
               Sdate={(d) => setStateDateList(d)}
               SdateData={(data) => setStateDateData(data)}
               // districtD={(dd) => setDistrictData(dd)}
@@ -75,7 +77,7 @@ function App() {
             />
           </>
         ) : (
-          <div class="bars-1"></div>
+          <div className="bars-1"></div>
         )}
       </div>
     </div>

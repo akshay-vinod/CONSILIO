@@ -54,7 +54,7 @@ const District = ({
           )}
         </div>
         <div className="select">
-          {load ? (
+          {loadApi ? (
             ""
           ) : (
             <select

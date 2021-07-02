@@ -1,41 +1,38 @@
 .cards {
-  margin: 5vh;
+  margin: 4vh;
   display: flex;
   align-items: center;
   justify-content: space-around;
   flex-wrap: wrap;
 }
 .card {
-  height: 130px;
-  width: 250px;
+  height: 160px;
+  width: 300px;
   text-align: center;
-  padding-top: 30px;
   margin: 15px;
-  border-radius: 5px;
+  border-radius: 12px;
   background-color: #22252d;
   color: #fff;
+  box-shadow: 0px 0px 24px #22252d;
   display: flex;
-  justify-content: space-around;
+  font-family: "Lato", sans-serif;
 }
-.card h4 {
-  display: inline;
-}
-.card div:nth-child(2) {
+.content {
+  width: 40%;
   display: flex;
   flex-direction: column;
 }
 .icon {
+  margin: 14px;
   width: 45px;
   height: 45px;
   border-radius: 5px;
-  margin-left: 10px;
-  background-color: aqua;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .icon i {
-  font-size: 30px;
+  font-size: 1.6rem;
 }
 .cards div:nth-child(1) .icon {
   background-color: rgb(255, 7, 58);
@@ -45,4 +42,43 @@
 }
 .cards div:nth-child(3) .icon {
   background-color: rgb(108, 117, 125);
+}
+.count {
+  margin-left: 14px;
+}
+.count p {
+  color: #4f5052;
+  margin-bottom: 5px;
+  margin-left: 0;
+}
+.change {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  /* background-color: rosybrown; */
+}
+.increase {
+  /* background-color: orange; */
+  display: flex;
+  margin: 14px 24px 0 0;
+  justify-content: flex-end;
+  width: 90%;
+}
+.red {
+  color: rgb(250, 3, 3);
+}
+.green {
+  color: rgb(0, 255, 0);
+}
+.change > p {
+  color: #4f5052;
+  text-align: end;
+  margin: 5px 14px 0 0;
+  font-size: 0.8rem;
+}
+.noChart {
+  margin-left: 5px;
+  margin-top: 5px;
+  width: 85%;
+  height: 80px;
 }
