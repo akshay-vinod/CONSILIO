@@ -8,7 +8,10 @@
 .App {
   display: flex;
   background-color: #22252d;
-  height: 100vh;
+  min-width: 100vw;
+  min-height: 100vh;
+  height: fit-content;
+  width: fit-content;
 }
 .overview {
   width: 100%;

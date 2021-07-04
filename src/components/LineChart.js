@@ -107,7 +107,7 @@ const LineChart = ({ stateD, stateDateD, dData, title }) => {
         />
       </div>
       <div className="coffee">
-        <div className="pie">
+        <div className="chart">
           <Doughnut
             data={dataDoughnut}
             height={100}

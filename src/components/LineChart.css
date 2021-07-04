@@ -1,19 +1,20 @@
 .LineChart {
   display: flex;
 }
+@media only screen and (max-width: 1277px) {
+  .LineChart {
+    flex-direction: column;
+  }
+  .chart {
+    min-width: 90%;
+    margin-bottom: 20px;
+  }
+}
 .chart {
   width: 37vw;
-  height: 350px;
+  height: 355px;
   background-color: #22252d;
-  margin-left: 30px;
-  border-radius: 8px;
-  padding: 10px;
-}
-.pie {
-  width: 37vw;
-  height: 350px;
-  background-color: #22252d;
-  margin-left: 30px;
+  margin-left: 45px;
   border-radius: 8px;
   padding: 10px;
 }
