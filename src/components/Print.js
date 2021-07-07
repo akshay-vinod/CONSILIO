@@ -93,6 +93,7 @@ const Print = ({
           if ("recovered" in item) Recovered.push(item.recovered);
           if ("deceased" in item) Deceased.push(item.deceased);
         }
+        return "";
       });
       var arrState = [
         {
@@ -186,7 +187,7 @@ const Print = ({
                               backgroundColor: gradient,
                               borderColor: `${item.color + ",0.3)"}`,
                               tension: 0.4,
-                              pointRadius: [0, 0, 0, 0, , 0, 5],
+                              pointRadius: [0, 0, 0, 0, 0, 0, 5],
                               pointBackgroundColor: "#fff",
                             },
                           ],

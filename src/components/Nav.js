@@ -15,13 +15,14 @@ const Nav = () => {
         <li>
           <button className="btn">
             <i className="bi bi-grid-1x2-fill" style={{ color: "#ffff" }}></i>
-            <a href="#">Dashboard</a>
+            <a href="https://akshay-vinod.github.io/CONSILIO/">Dashboard</a>
           </button>
         </li>
       </ul>
       <a
         title="Buy me a coffee"
         href="https://www.buymeacoffee.com/akshayvinod"
+        rel="noreferrer"
         target="_blank"
       >
         <img

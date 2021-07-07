@@ -17,6 +17,7 @@ const LineChart = ({ stateD, stateDateD, dData, title }) => {
         value: dData[item].dates[districtDate].delta.confirmed,
       });
     }
+    return "";
   });
   dataDistrict.sort((a, b) => {
     return b.value - a.value;
@@ -34,6 +35,7 @@ const LineChart = ({ stateD, stateDateD, dData, title }) => {
       if ("recovered" in item) Recovered.push(item.recovered);
       if ("deceased" in item) Deceased.push(item.deceased);
     }
+    return "";
   });
   const data = {
     labels: [...stateD],
@@ -98,9 +100,11 @@ const LineChart = ({ stateD, stateDateD, dData, title }) => {
                 text: `Cumulative Summary of ${title}`,
                 color: "#ffff",
                 font: {
+                  family: "Montserrat",
                   size: 21,
                   weight: "normal",
                 },
+                padding: { top: 10, bottom: 20 },
               },
             },
           }}
@@ -127,9 +131,11 @@ const LineChart = ({ stateD, stateDateD, dData, title }) => {
                   text: `Top districts(Confirmed Case) `,
                   color: "#ffff",
                   font: {
+                    family: "Montserrat",
                     size: 21,
                     weight: "normal",
                   },
+                  padding: { top: 10, bottom: 20 },
                 },
               },
             }}

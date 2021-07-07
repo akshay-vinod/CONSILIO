@@ -7,7 +7,7 @@
   position: relative;
 }
 .navbar h2 {
-  font-family: "Poppins", sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 500;
   padding: 40px 30px;
 }
@@ -17,7 +17,7 @@
   margin-top: 5vh;
 }
 .nav-links li button a {
-  font-family: "Poppins", sans-serif;
+  font-family: "Montserrat", sans-serif;
   text-decoration: none;
   color: rgb(255, 255, 255);
 }

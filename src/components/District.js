@@ -26,7 +26,10 @@ const District = ({
   return (
     <div className="district">
       <div className="">
-        <h2>Overview : {district === "Select District" ? input : district}</h2>
+        <h2>
+          Overview :{" "}
+          <span>{district === "Select District" ? input : district}</span>
+        </h2>
       </div>
       <div className="selectors">
         <div className="select">
