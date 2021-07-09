@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./District.css";
+import "./css/District.css";
 const District = ({
   sList,
   dList,

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Line } from "react-chartjs-2";
-import "./Print.css";
+import "./css/Print.css";
 // const request = require("request");
 // const csv = require("csvtojson");
 

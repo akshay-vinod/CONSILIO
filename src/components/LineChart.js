@@ -1,6 +1,6 @@
 import React from "react";
 import { Line, Doughnut } from "react-chartjs-2";
-import "./LineChart.css";
+import "./css/LineChart.css";
 const LineChart = ({ stateD, stateDateD, dData, title }) => {
   var Confirmed = [];
   var Recovered = [];
