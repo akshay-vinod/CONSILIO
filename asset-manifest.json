@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/CONSILIO/static/css/main.1e22e33c.chunk.css",
-    "main.js": "/CONSILIO/static/js/main.b3f0516c.chunk.js",
-    "main.js.map": "/CONSILIO/static/js/main.b3f0516c.chunk.js.map",
+    "main.css": "/CONSILIO/static/css/main.5eb87d26.chunk.css",
+    "main.js": "/CONSILIO/static/js/main.171314e1.chunk.js",
+    "main.js.map": "/CONSILIO/static/js/main.171314e1.chunk.js.map",
     "runtime-main.js": "/CONSILIO/static/js/runtime-main.2f10b03e.js",
     "runtime-main.js.map": "/CONSILIO/static/js/runtime-main.2f10b03e.js.map",
     "static/js/2.3745a0c8.chunk.js": "/CONSILIO/static/js/2.3745a0c8.chunk.js",
     "static/js/2.3745a0c8.chunk.js.map": "/CONSILIO/static/js/2.3745a0c8.chunk.js.map",
     "index.html": "/CONSILIO/index.html",
-    "static/css/main.1e22e33c.chunk.css.map": "/CONSILIO/static/css/main.1e22e33c.chunk.css.map",
+    "static/css/main.5eb87d26.chunk.css.map": "/CONSILIO/static/css/main.5eb87d26.chunk.css.map",
     "static/js/2.3745a0c8.chunk.js.LICENSE.txt": "/CONSILIO/static/js/2.3745a0c8.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.2f10b03e.js",
     "static/js/2.3745a0c8.chunk.js",
-    "static/css/main.1e22e33c.chunk.css",
-    "static/js/main.b3f0516c.chunk.js"
+    "static/css/main.5eb87d26.chunk.css",
+    "static/js/main.171314e1.chunk.js"
   ]
 }
